@@ -1,0 +1,816 @@
+VISHWAS // THE ARCHIVE
+Product Requirements Document (PRD)
+Document Type: Product Requirements DocumentProduct: Personal Portfolio / Digital ArchiveOwner: Vishwas S KStatus: Active / Iterative BuildPrimary Goal: Create a distinctive personal portfolio that feels like a curated digital archive rather than a conventional developer portfolio.
+1. Product Overview
+1.1 Product Name
+VISHWAS // THE ARCHIVE
+The portfolio is designed as a digital archive of Vishwas's work, interests, creative identity, technical capabilities, and visual interests.
+It should communicate:
+A person with multiple creative and technical worlds, presented through one cohesive editorial experience.
+The site is not intended to look like a conventional "developer portfolio" containing a hero, skill cards, project cards, and contact section.
+Instead, it should feel closer to:
+a personal digital archive
+an editorial website
+a cinematic experience
+a curated exhibition
+a visual identity system
+The design should be memorable because of its composition, typography, navigation, transitions, imagery, and storytelling, rather than because of excessive visual effects.
+2. Product Vision
+Create a portfolio that answers three questions immediately:
+Who is Vishwas?
+A developer and creative individual whose interests extend beyond coding.
+What does Vishwas do?
+Builds software while also exploring:
+photography
+image/video editing
+automobiles
+cinema
+visual storytelling
+What makes the portfolio different?
+Instead of presenting everything as one list, the portfolio divides the identity into distinct worlds.
+The user should feel that they are navigating an archive rather than browsing a resume.
+3. Core Product Philosophy
+The portfolio should follow five principles.
+3.1 Editorial, not generic
+Avoid the visual language of generic AI-generated portfolios.
+The design should feel intentionally art-directed.
+3.2 Content before decoration
+Visual effects should support the content.
+They should never become the content.
+3.3 Real over fabricated
+Use real projects, real repositories, real photography, real personal imagery, and real interests.
+Do not invent:
+achievements
+statistics
+clients
+experience
+projects
+skills
+testimonials
+professional claims
+3.4 Distinct worlds, unified identity
+Each section should have its own atmosphere and visual character while still belonging to the same portfolio.
+3.5 Cinematic but restrained
+The site can have motion and transitions, but it must avoid becoming an effects showcase.
+4. Target Experience
+A visitor should experience the site roughly like this:
+INTRO → IDENTITY → WORLDS → EXPLORE → ARCHIVE → ABOUT → EXIT
+The homepage establishes the identity.
+The individual worlds provide depth.
+Navigation allows the visitor to move through the archive naturally.
+5. Information Architecture
+Current Routes
+Route
+World
+Purpose
+/
+Home
+Main portfolio entry point
+/code
+CODE
+Development and software
+/frame
+FRAME
+Photography
+/cut
+CUT
+Editing / visual work
+/drive
+DRIVE
+Automobiles
+/screen
+SCREEN
+Cinema / Marvel / films
+/about
+ABOUT
+Personal / professional information
+Removed Route
+/lab
+LAB was part of the earlier concept but has been removed from the current product.
+LAB must not be reintroduced unless explicitly requested.
+6. Portfolio Worlds
+The portfolio is structured around five active worlds.
+6.1 CODE
+Purpose
+Represent Vishwas as a developer.
+Content
+Potential content includes:
+software projects
+GitHub repositories
+development work
+technologies
+selected projects
+project descriptions
+links to live deployments
+source repositories
+Important distinction
+Coding-related decorative elements belong primarily on the CODE page, not on the homepage.
+The homepage should not become visually dominated by coding graphics.
+GitHub Integration
+The portfolio should dynamically retrieve public repositories from:
+GitHub username: VishwasSK15
+The implementation uses the GitHub API.
+Repositories are filtered using the:
+portfolio topic
+Repositories should be:
+fetched from GitHub
+filtered to relevant portfolio repositories
+sorted by recent update
+displayed dynamically
+The project data layer uses server-side fetching with approximately 1-hour revalidation.
+This means newly updated portfolio-tagged repositories can appear without manually editing the portfolio every time.
+Current known examples
+The portfolio has previously detected repositories including:
+HealthHub-frontend
+HealthHub-admin
+AI-Resume-Analyzer
+The actual displayed project set should always come from the current GitHub integration rather than hardcoded assumptions.
+7. FRAME
+Purpose
+Represent photography and visual observation.
+FRAME should feel image-led.
+The page should prioritize:
+photographs
+composition
+visual storytelling
+image presentation
+personal photographic work
+The interface should not turn photography into a standard gallery grid unless that is required by the actual content.
+Images should be allowed to breathe.
+8. CUT
+Purpose
+Represent editing and visual post-production.
+CUT represents:
+photo editing
+video editing
+creative manipulation
+visual experiments
+before/after or process-oriented work where appropriate
+The page should feel different from FRAME.
+FRAME
+Captures.
+CUT
+Transforms.
+The distinction should be visually understandable.
+9. DRIVE
+Purpose
+Represent the user's interest in automobiles.
+Potential content:
+cars
+motorcycles
+automotive photography
+automotive culture
+visual references
+personal automotive interests
+The page should communicate enthusiasm for automobiles without becoming a generic automobile website.
+10. SCREEN
+Purpose
+Represent cinema and film interests.
+This is the entertainment/cinema world of the archive.
+The user's known interests include:
+Marvel / MCU
+Marvel Cinematic Universe is a major personal interest.
+Iron Man is the user's favorite Marvel hero.
+Science Fiction
+Important examples include:
+Interstellar
+The Martian
+F1 / Cars-related cinema
+An important reference is:
+Ford v Ferrari / F1-related cinema
+Kannada Cinema
+Kannada cinema is also an important part of the user's movie interests.
+The SCREEN page can therefore be conceptually structured around four content areas:
+Marvel / Iron Man
+Science Fiction
+F1 & Cars
+Kannada Cinema
+These categories should feel like parts of the same cinematic archive rather than four unrelated cards.
+11. Homepage
+The homepage is the primary entry experience.
+Homepage structure
+11.1 Cinematic Intro
+A short opening experience establishing the identity of:
+VISHWAS // THE ARCHIVE
+It should feel intentional and editorial.
+Avoid an overly long intro animation.
+11.2 Hero
+The hero should communicate identity rather than simply saying:
+"Hi, I'm Vishwas, a full-stack developer."
+The visual language should use typography, composition, and real imagery.
+Current creative direction
+A simpler editorial cutout treatment has been accepted:
+use a natural background-removed photograph
+blend the photograph into/behind oversized VISHWAS typography
+allow the subject to interact with selected letters
+keep the composition clean
+Explicitly avoid
+green glow
+orbit effects
+halos
+generated-looking effects
+excessive visual effects
+busy composition
+The hero should look designed, not generated.
+12. My Worlds
+The homepage should introduce the portfolio's worlds.
+Current active worlds:
+CODE
+FRAME
+CUT
+DRIVE
+SCREEN
+Each world should have:
+title
+short description
+visual identity
+clear navigation
+relationship to adjacent worlds
+The worlds should not simply be five identical cards.
+13. About Preview
+The homepage should contain a concise ABOUT preview.
+It should introduce enough personal context to create curiosity without duplicating the full About page.
+The visitor should have a clear path:
+Homepage → About → Full personal information
+14. Archive Closing
+The homepage should have a closing section that reinforces the archive concept.
+This should feel like the end of an editorial sequence rather than a conventional:
+"Thanks for visiting!"
+section.
+15. Footer
+The footer should remain restrained.
+It should contain relevant navigation and identity information without becoming visually overloaded.
+16. Navigation System
+Navigation is a major part of the product experience.
+The site should not feel like a collection of disconnected pages.
+World Navigation Chain
+The worlds form a navigable sequence.
+The visitor should be able to move between adjacent worlds without constantly returning to the homepage.
+Conceptually:
+CODE → FRAME → CUT → DRIVE → SCREEN
+and backwards through the same system.
+17. World Index
+A world index/navigation system should provide an overview of the archive.
+The visitor should understand:
+where they are
+what worlds exist
+what they have already explored
+where they can go next
+The navigation should feel like part of the archive interface rather than a standard navbar.
+18. Previous / Next Navigation
+Individual world pages should include creative previous/next navigation.
+Example:
+← FRAME
+NEXT: CUT →
+This creates continuity between the worlds.
+The navigation should feel editorial rather than like default browser pagination.
+19. Visual Design System
+19.1 Overall aesthetic
+Primary descriptors:
+editorial
+cinematic
+modern
+restrained
+premium
+personal
+visual
+intentional
+immersive
+20. Color System
+The original direction experimented with multiple colors, including blue, gold, and light red.
+The design evolved toward stronger hue separation between worlds, rather than making the entire site predominantly blue.
+The current philosophy is:
+Use color to distinguish worlds and establish atmosphere, not to decorate every component.
+21. Homepage Color Direction
+The homepage should use:
+warm neutral / near-white light background
+dark readable text
+one restrained accent
+Dark mode must be a genuine dark theme rather than simply making the light theme black.
+22. Accent Color
+A later design direction established that the accent should be derived from the blue tone visible in the user's shirt in the selected reference image.
+This replaces the previous green accent direction.
+Where the old design used green accent elements, those areas should use the chosen blue accent instead.
+The accent should be applied consistently to:
+selected UI elements
+highlights
+borders where appropriate
+active states
+key visual details
+It should not flood the interface.
+23. Color Restrictions
+Avoid:
+rainbow gradients
+neon-heavy palettes
+purple/black generic AI aesthetic
+harsh gradients
+radial glow orbs
+green glow treatments
+excessive multicolor decoration
+24. Typography
+Typography is a primary part of the visual identity.
+The site should use typography to create:
+scale
+hierarchy
+rhythm
+editorial composition
+Large typography is encouraged, particularly for:
+VISHWAS
+and world titles.
+However, typography must remain readable.
+Recent requirement
+Text that appeared too small should be increased slightly where needed.
+Typography must also avoid:
+overlap
+clipping
+unreadable tracking
+excessive decorative distortion
+25. Font Restrictions
+Avoid default/generic portfolio typography choices such as:
+Inter
+Geist
+Space Grotesk
+The typography should contribute to the portfolio's editorial identity.
+26. Effects to Avoid
+The portfolio should deliberately avoid the following visual trends:
+liquid glass
+excessive glassmorphism
+dot grids
+stripes
+radial orbs
+sparkle icons
+emojis as UI
+animated arrows
+excessive shadows
+excessive rounded cards
+orbit graphics
+halos
+generic glowing objects
+busy particle effects
+rainbow/neon effects
+The absence of these effects is intentional.
+27. Animation & Motion
+Motion is important, but should remain purposeful.
+Use animation for:
+entering/exiting worlds
+page transitions
+revealing content
+typography
+image movement
+navigation
+subtle hover interactions
+Do not animate everything.
+Animation should communicate:
+movement through an archive
+rather than:
+look what the frontend can animate.
+28. Reduced Motion
+The product must respect user motion preferences.
+A reduced-motion mode should minimize or disable non-essential animations.
+This is an accessibility requirement.
+29. Responsive Design
+The portfolio must be fully responsive.
+Desktop
+Desktop should provide the full cinematic/editorial composition.
+It can use:
+oversized typography
+layered imagery
+horizontal relationships
+generous whitespace
+sophisticated transitions
+Mobile
+Mobile is not simply a compressed desktop.
+The layout should be deliberately re-composed for smaller screens.
+Priorities:
+readability
+navigation
+image quality
+touch interaction
+performance
+visual hierarchy
+The experience must remain recognizable as the same archive.
+30. Themes
+The portfolio must support:
+Light mode
+A genuine light editorial theme.
+Dark mode
+A genuine dark editorial theme.
+The two themes should not simply be:
+white → black
+They should have intentional color relationships and readable contrast.
+31. Real Image Strategy
+Real images are a core part of the portfolio.
+Where a personal image is required:
+use the actual supplied image
+crop appropriately
+remove the background when required
+preserve the subject's identity
+avoid AI-generated replacement subjects
+The visual treatment should enhance the actual photograph rather than replace it.
+32. Image Treatment
+For hero/cutout compositions:
+start with the user's actual image
+crop appropriately
+remove the background naturally
+place the subject behind/inside selected typography
+integrate the image into the composition
+apply restrained color treatment where necessary
+Do not turn the subject into an artificial glowing object.
+33. Homepage Content Rules
+The homepage should not contain excessive coding decoration.
+Coding-specific visual language belongs on /code.
+The homepage should communicate the complete identity:
+Developer + Creator + Photographer + Editor + Automotive/Cinema enthusiast
+without forcing every interest into a visual effect.
+34. About Page
+The About page should provide deeper personal/professional context.
+It should complement, rather than repeat, the homepage.
+Possible information categories:
+introduction
+development background
+technical interests
+creative interests
+portfolio philosophy
+education/professional information where relevant
+links/contact information
+Only verified information should be displayed.
+35. Technical Architecture
+Framework
+Next.js 16.3.4
+Using:
+App Router
+server/client component architecture where appropriate
+UI
+React 19.2.8
+Language
+TypeScript 5.x
+Styling
+Tailwind CSS v4
+The project uses the Tailwind CSS v4 CSS-first configuration approach.
+There is no requirement for a traditional:
+tailwind.config.js
+or
+tailwind.config.ts
+36. Core Dependencies
+Known stack:
+Next.js
+React
+TypeScript
+Tailwind CSS v4
+Framer Motion
+next-themes
+Lucide React
+However, dependency additions should be justified.
+Do not introduce libraries simply to achieve effects that can be implemented cleanly with the existing stack.
+37. GitHub Architecture
+GitHub integration should remain dynamic.
+Data source
+GitHub public API.
+Account
+VishwasSK15
+Filtering
+Only repositories carrying the portfolio topic should be considered portfolio projects.
+Sorting
+Sort by recently updated repositories.
+Revalidation
+Approximately one hour.
+Benefits
+This allows the portfolio's project section to evolve with the user's GitHub activity without manually updating project cards.
+38. Project Presentation
+Projects should communicate useful information such as:
+project name
+description
+technologies
+current state
+repository
+live deployment where available
+relevant visual
+Avoid turning every project into an identical generic card.
+The presentation should remain consistent with the CODE world's editorial identity.
+39. Known Project Content
+The portfolio has included/connected with projects such as:
+HealthHub
+Doctor appointment booking system.
+Known technology direction:
+MERN
+React
+Node.js
+Express
+MongoDB
+Cloudinary
+AI Resume Analyzer
+A separate AI-related project represented through GitHub.
+The portfolio should retrieve current project information from GitHub rather than assuming this list is permanently fixed.
+40. Performance Requirements
+The portfolio is highly visual, therefore performance is important.
+Requirements:
+optimize images
+avoid unnecessary client-side JavaScript
+use server-side data fetching where appropriate
+avoid animation that causes layout thrashing
+lazy-load non-critical imagery
+preserve good mobile performance
+minimize unnecessary dependencies
+The cinematic quality must not come at the cost of a poor browsing experience.
+41. Accessibility
+The product should support:
+semantic HTML
+keyboard navigation
+readable contrast
+visible focus states
+alt text for meaningful images
+reduced-motion preferences
+accessible interactive elements
+usable navigation without relying exclusively on animation
+42. Interaction Requirements
+Interactions should feel intentional.
+Examples:
+Hover
+Can reveal:
+project metadata
+image movement
+subtle typography changes
+world previews
+Navigation
+Can use:
+transitions
+directional movement
+world index
+previous/next controls
+Page transitions
+Should preserve the feeling of moving through one continuous archive.
+43. Error / Empty States
+The system should gracefully handle cases such as:
+GitHub unavailable
+Show a designed fallback rather than breaking the CODE page.
+No portfolio repositories
+Show a meaningful archive state rather than an empty generic grid.
+Image unavailable
+Preserve layout integrity and provide an appropriate fallback.
+Slow loading
+Use dedicated loading states rather than content jumping.
+Existing project components include the conceptual structure for:
+ProjectsLoading
+ProjectsEmpty
+44. Current Component Architecture
+The portfolio has previously been structured with components including:
+ProjectList
+Projects
+ProjectItem
+ProjectVisual
+ProjectsLoading
+ProjectsEmpty
+This architecture should be preserved and improved rather than replaced unnecessarily.
+45. Existing Design System Architecture
+The portfolio uses section/world atmosphere variables to distinguish visual environments.
+Each world can have:
+section start color
+section mid color
+glow/accent color
+These should be used carefully.
+The system exists to provide hue separation between sections, not to create aggressive gradients.
+46. Design Constraints
+The following constraints are considered product requirements.
+Must
+feel personal
+feel editorial
+feel cinematic
+work on desktop
+work on mobile
+support light mode
+support dark mode
+use real content
+use real images where intended
+maintain world-based navigation
+maintain GitHub integration
+support reduced motion
+preserve clear typography
+preserve navigation between worlds
+Must not
+become a generic AI portfolio
+become an ordinary card-based portfolio
+use fabricated content
+reintroduce LAB
+use excessive coding decorations on homepage
+use green glow treatment
+use generic purple/black AI aesthetics
+use rainbow/neon gradients
+overload pages with effects
+use excessive rounded cards
+use unnecessary decorative elements
+redesign the entire system unnecessarily
+47. Current Visual Identity Direction
+The strongest current direction can be summarized as:
+Editorial archive + oversized typography + real photography + restrained color + cinematic navigation.
+Not:
+flashy futuristic developer portfolio.
+The portfolio should look like something that was deliberately designed by an individual with a visual point of view.
+48. Logo / Personal Mark Direction
+The personal logo/mark is being developed as a separate identity element.
+The desired direction is:
+minimal
+geometric
+recognizable
+based around the initials/letterforms
+visually compatible with the archive identity
+modern and aesthetic
+The mark should not contain unnecessary lines or decorative elements.
+Previously identified unwanted selected lines/segments should be removed rather than retained as decoration.
+The logo should work independently from the full VISHWAS // THE ARCHIVE wordmark.
+49. Content Authenticity
+The portfolio is fundamentally an identity project.
+Therefore:
+Authenticity > quantity.
+It is preferable to have:
+3 strong real projects
+than:
+10 fabricated-looking project entries.
+Similarly:
+real photographs > stock imagery
+real interests > generic hobby labels
+real GitHub data > manually fabricated project metadata
+50. Product Success Criteria
+The portfolio is successful when a visitor can:
+Within the first few seconds
+Understand that this is a personal creative/technical archive.
+Within the first minute
+Understand the five worlds and what makes each different.
+During exploration
+Move between worlds naturally without getting lost.
+On CODE
+Understand what Vishwas builds.
+On FRAME
+Understand the photographic side.
+On CUT
+Understand the editing/creative side.
+On DRIVE
+Understand the automotive interest.
+On SCREEN
+Understand the cinematic interests.
+On ABOUT
+Understand the person behind the archive.
+51. Technical Acceptance Criteria
+Build
+Next.js build completes successfully.
+TypeScript has no blocking errors.
+ESLint has no errors/warnings where applicable.
+Production routes render correctly.
+Navigation
+All active routes work.
+Previous/next world navigation works.
+World index works.
+No links point to removed /lab.
+GitHub
+GitHub repositories are fetched successfully.
+portfolio topic filtering works.
+Sorting works.
+Failure state works.
+Loading state works.
+Responsive
+Desktop layout works.
+Tablet layout works.
+Mobile layout works.
+No horizontal overflow.
+No text overlap.
+No clipped primary content.
+Themes
+Light mode works.
+Dark mode works.
+Theme transitions do not break layouts.
+Text remains readable in both themes.
+Accessibility
+Keyboard navigation works.
+Interactive elements are accessible.
+Reduced-motion behavior works.
+Meaningful images have appropriate alternative text.
+52. Visual Acceptance Criteria
+The final site should pass the following subjective design test:
+Does it look like a generic AI portfolio?
+No.
+Does every section need an effect?
+No.
+Is the typography doing meaningful design work?
+Yes.
+Are the images treated as primary content?
+Yes.
+Are colors helping differentiate worlds?
+Yes.
+Does the homepage feel clean?
+Yes.
+Does the CODE page feel more technical than the homepage?
+Yes.
+Does the portfolio feel like one product despite having multiple worlds?
+Yes.
+Does the design remain recognizable without animations?
+Yes.
+53. Non-Goals
+The portfolio is not intended to become:
+a SaaS product
+a social network
+a blog platform
+a CMS-heavy website
+a generic resume website
+a template marketplace portfolio
+an effects/animation showcase
+a movie database
+an automobile database
+The portfolio's purpose is personal presentation and identity.
+54. Future Extensibility
+The architecture should allow future content to be added without redesigning the product.
+Potential future additions can include:
+new GitHub projects
+additional photography
+new editing work
+automotive content
+additional cinema entries
+updated About information
+However, new content should fit the existing world system.
+Do not create a new section simply because new content exists.
+55. Development Principles
+As a senior indie-development project, implementation should follow:
+1. Build the system, not individual screens
+Components and design tokens should be reusable.
+2. Preserve the visual language
+New pages must belong to the same archive.
+3. Prefer composition over decoration
+Solve visual problems through:
+typography
+spacing
+layout
+imagery
+hierarchy
+before adding effects.
+4. Prefer native capabilities
+Do not add a library when the current stack can handle the requirement cleanly.
+5. Keep data dynamic where it matters
+Especially GitHub/project data.
+6. Keep personal content editable
+Content should not be deeply buried inside components.
+56. Current Technical Baseline
+The portfolio has reached a stable technical baseline in previous iterations.
+Previously recorded status:
+Build: PASSLint: PASSErrors: 0Warnings: 0
+The /code route previously used approximately:
+Revalidate: 1 hour
+This baseline should be preserved during future iterations.
+57. Final Product Definition
+VISHWAS // THE ARCHIVE is a responsive, cinematic personal portfolio built as a collection of interconnected creative worlds.
+Its primary identity comes from:
+VISHWAS
+CODE — buildingFRAME — capturingCUT — transformingDRIVE — exploringSCREEN — experiencing
+The website should not attempt to explain every aspect of Vishwas immediately.
+Instead, it should create enough curiosity for the visitor to explore the archive.
+The design language is:
+Minimal where it needs to be.Cinematic where it matters.Personal everywhere.
+The final experience should feel less like:
+"Here is my portfolio."
+and more like:
+"This is my archive. Explore it."
+58. Implementation Priority
+P0 — Must Preserve
+Overall archive concept
+Homepage identity
+Five active worlds
+World navigation
+Responsive layouts
+Light/dark themes
+Real content
+GitHub integration
+Accessibility
+Reduced-motion support
+P1 — High Priority
+Hero image/typography composition
+Distinct world atmospheres
+Typography refinement
+Previous/next navigation
+World index
+Project presentation
+Mobile composition
+Loading/empty states
+P2 — Refinement
+Micro-interactions
+Transition tuning
+Image treatment
+Fine typography adjustments
+Accent-color refinement
+Logo/mark refinement
+59. Senior Indie Developer Definition of Done
+The portfolio is considered complete when:
+every active route has a deliberate purpose
+the homepage communicates the overall identity immediately
+each world feels distinct
+navigation feels continuous
+GitHub projects update dynamically
+real imagery is integrated properly
+light and dark modes both feel designed
+mobile does not feel like a desktop afterthought
+animations enhance rather than distract
+reduced motion works
+there are no layout overlaps
+there are no unnecessary placeholder elements
+there are no fabricated claims
+the site remains visually strong without decorative effects
+the codebase remains maintainable
+production build and lint remain clean
+Most importantly:
+The portfolio should feel unmistakably like Vishwas, not like a portfolio template.

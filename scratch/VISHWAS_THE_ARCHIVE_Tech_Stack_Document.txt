@@ -1,0 +1,479 @@
+VISHWAS // THE ARCHIVE
+RECOMMENDED TECH STACK DOCUMENT
+Production architecture for a cinematic, editorial, content-driven portfolioPrinciple: use modern tooling, but keep the product architecture intentionally small.
+1. Executive Recommendation
+The recommended stack is a Next.js-first TypeScript architecture with Tailwind CSS v4, Framer Motion, next-themes, GitHub's API for dynamic project data, optimized image delivery, and Vercel for deployment.
+The key recommendation is not to make the portfolio technically complicated just because the visual experience is sophisticated. The site should feel advanced while the underlying architecture remains maintainable.
+Recommended core stack
+Framework: Next.js 16.x with App Router
+UI: React 19.x
+Language: TypeScript 5.x
+Styling: Tailwind CSS v4 + project CSS variables
+Animation: Framer Motion
+Icons: Lucide React
+Theme: next-themes
+Content/data: TypeScript content modules + GitHub API
+Image pipeline: Next/Image
+Validation: Zod where external data crosses the application boundary
+Testing: Vitest + React Testing Library + Playwright
+Code quality: ESLint + TypeScript strict mode + Prettier
+Package manager: npm
+Deployment: Vercel
+Repository/CI: GitHub + GitHub Actions where needed
+2. Current Project Baseline
+The project already has a strong baseline that should be preserved rather than replaced.
+Area
+Current
+Recommendation
+Framework
+Next.js 16.3.4
+Keep Next.js 16.x and upgrade deliberately within the same major.
+React
+19.2.8
+Keep React 19.x.
+Language
+TypeScript ^5
+Keep TypeScript 5.x with strict checking.
+CSS
+Tailwind CSS v4
+Keep Tailwind v4 CSS-first approach.
+Animation
+Framer Motion
+Keep; use for purposeful motion.
+Theme
+next-themes
+Keep for light/dark theme switching.
+Icons
+Lucide React
+Keep; use sparingly.
+GitHub
+GitHub API
+Keep dynamic repository integration.
+3. Architecture Philosophy
+3.1 Static-first, dynamic where useful
+Most of the portfolio is stable content and visual composition. It should therefore be rendered as efficiently as possible. Dynamic behavior should be introduced only where it creates real product value—most notably GitHub project data, theme state, and client-side interaction.
+3.2 Server by default
+Use Server Components for content-heavy and data-fetching portions. Use Client Components only for interaction, animation, theme state, menus, and browser-dependent behavior.
+3.3 Avoid unnecessary backend infrastructure
+This portfolio does not currently need a custom Express/Node backend, MongoDB database, GraphQL server, or CMS. Adding them would create operational complexity without a clear product benefit.
+3.4 Design system before page-specific hacks
+The five worlds should share primitives for typography, spacing, navigation, transitions, buttons, metadata, project presentation, and responsive behavior.
+4. Framework — Next.js
+Recommendation: Next.js 16.x / App Router
+Next.js should remain the foundation because the portfolio benefits from server rendering, image optimization, route-level layouts, metadata, static generation, server-side data fetching, and straightforward deployment.
+Use Next.js for
+App Router and nested layouts
+Static and dynamic route rendering
+Server-side GitHub data fetching
+Metadata and Open Graph pages
+Image optimization
+Loading and error boundaries
+Route-level code splitting
+SEO-friendly page generation
+Suggested route structure
+/
+/code
+/frame
+/cut
+/drive
+/screen
+/about
+Do not reintroduce /lab unless the product direction explicitly changes.
+5. React
+Recommendation: React 19.x
+React should be used primarily to compose the interface and isolate interactive pieces.
+Component rule
+Prefer small, purposeful components over giant page components. However, do not split every visual fragment into a component merely for the sake of abstraction.
+Suggested component groups
+layout — site shell, navigation, world index
+hero — archive hero and portrait composition
+worlds — world previews and world navigation
+projects — project list, item, visual, loading, empty
+media — image wrappers and galleries
+motion — reusable transition primitives
+ui — buttons, labels, links, metadata
+theme — theme provider and theme controls
+6. TypeScript
+Recommendation: TypeScript 5.x
+TypeScript should be mandatory across the application.
+Why
+Safer GitHub API data handling
+Clear project/content models
+Better refactoring safety
+Better editor tooling
+Reduced runtime mistakes
+Easier long-term maintenance
+Suggested domain types
+Project
+World
+WorldTheme
+SocialLink
+GitHubRepository
+MediaAsset
+NavigationItem
+7. Styling — Tailwind CSS v4
+Recommendation: Keep Tailwind CSS v4
+The current CSS-first Tailwind v4 architecture is a good fit for this project. Continue using @import 'tailwindcss' and define project-specific design tokens in CSS.
+Use Tailwind for
+Layout
+Spacing
+Responsive behavior
+Typography utilities
+State variants
+Component-level styling
+Use CSS variables for
+World atmosphere colors
+Theme colors
+Typography tokens
+Archive accent color
+Transition timings
+Spacing or composition variables where necessary
+Do not create a giant collection of arbitrary utility combinations. If a visual rule is part of the identity, give it a reusable semantic token.
+8. Animation — Framer Motion
+Recommendation: Keep Framer Motion
+Framer Motion is appropriate because the portfolio's differentiation depends partly on transitions and interaction.
+Primary uses
+Page/world transitions
+Hero text and image reveals
+World navigation transitions
+Scroll-linked reveals
+Hover states
+Menu transitions
+Subtle image movement
+Important constraint
+Animation should not become the architecture. Avoid putting large portions of the page behind client-side animation when a simple CSS transition or server-rendered structure would work.
+Accessibility
+Respect prefers-reduced-motion and provide reduced-motion variants for all non-essential movement.
+9. Theme System — next-themes
+Recommendation: Keep next-themes
+Use next-themes to manage light and dark mode without building a custom theme state system.
+Theme requirements
+Light mode must be a designed theme.
+Dark mode must be a designed theme.
+Avoid pure white/pure black wherever a softer editorial surface works better.
+Use the personal blue accent consistently.
+Ensure readable contrast in both modes.
+10. Icons — Lucide React
+Recommendation: Keep Lucide React
+Use Lucide for functional interface icons only.
+Menu
+Close
+External link
+GitHub
+Arrow/navigation where genuinely useful
+Do not use icons as decorative filler. The design should primarily communicate through typography, imagery, spacing, and composition.
+11. Images — Next/Image
+Recommendation: Next.js Image
+Use next/image for portfolio imagery wherever practical.
+Benefits
+Responsive image sizing
+Lazy loading
+Modern image delivery
+Layout stability
+Performance optimization
+Image rules
+Use real personal imagery where specified.
+Prepare appropriate crops for desktop and mobile.
+Use priority loading only for truly above-the-fold images.
+Avoid shipping unnecessarily large source images.
+Use meaningful alt text for informative images.
+12. Content Architecture
+Recommendation: Hybrid content model
+Do not introduce a CMS initially.
+Static content
+Keep stable portfolio content in typed local data/modules or content files.
+World descriptions
+About information
+Social links
+Static project metadata
+Screen categories
+Design tokens
+Dynamic content
+Use external APIs only where automatic updates create meaningful value.
+GitHub repositories
+13. GitHub Integration
+Recommendation: Server-side GitHub API integration
+Continue the existing GitHub data layer for username VishwasSK15.
+Rules
+Fetch public repositories.
+Filter by the portfolio topic.
+Sort by recently updated.
+Revalidate approximately every hour.
+Normalize API responses into internal Project/GitHubRepository types.
+Handle rate limits and API failures gracefully.
+Architecture
+GitHub API → server-side data layer → validation/normalization → Projects components → UI
+Do not expose unnecessary API logic directly inside client components.
+14. Runtime Validation — Zod
+Recommendation: Add Zod only at external boundaries
+Zod is recommended for validating GitHub API responses or any future external data source. It should not be used to validate every internal object that TypeScript already guarantees.
+Why
+External APIs can change.
+Runtime data is not protected by TypeScript.
+A schema makes failures explicit and safer.
+15. Testing Strategy
+Unit/component testing — Vitest + React Testing Library
+Use for reusable components and logic that has meaningful behavior.
+Project filtering
+World navigation logic
+Theme-related UI behavior
+GitHub data normalization
+Important interactive components
+End-to-end — Playwright
+Use Playwright for the critical user journeys.
+Homepage loads.
+World navigation works.
+Previous/next navigation works.
+Theme switching works.
+CODE project links work.
+Mobile navigation works.
+No major visual/layout regression on supported viewports.
+Testing philosophy
+Do not chase arbitrary test coverage percentages. Test the parts that can break the product experience.
+16. Code Quality
+ESLint
+Keep ESLint enabled and clean.
+TypeScript strict mode
+Use strict TypeScript configuration.
+Prettier
+Use Prettier for consistent formatting if the project does not already have an equivalent formatting convention.
+Git hooks
+Optional: use a lightweight pre-commit workflow for lint/type checks. Do not make local development cumbersome.
+17. Package Manager
+Recommendation: npm
+Continue with npm because it is already part of the project's development workflow and there is no current reason to introduce a different package manager.
+Rule
+Commit the lockfile and use consistent Node/npm versions across local development and deployment.
+18. Node.js
+Recommendation: Node.js 22 LTS
+The project has already been using Node.js 22.x. Standardize development and deployment around the current Node 22 LTS line where supported by the selected Next.js version.
+Version management
+Use an .nvmrc or equivalent version declaration so local and deployment environments remain consistent.
+19. Deployment — Vercel
+Recommendation: Vercel
+Vercel is the natural deployment target for a Next.js portfolio because the project does not require a separate application server.
+Deployment responsibilities
+Production builds
+Preview deployments
+Environment variables
+CDN delivery
+Image optimization
+Server-side rendering and route execution
+Recommended workflow
+GitHub main branch → Vercel production. Feature branches / pull requests → preview deployment.
+20. CI/CD — GitHub Actions
+Recommendation: Lightweight GitHub Actions
+Use GitHub Actions only for checks that improve confidence before merging.
+Install dependencies
+TypeScript check
+Lint
+Unit tests
+Optional production build check
+Do not duplicate deployment infrastructure that Vercel already provides.
+21. Analytics
+Recommendation: privacy-conscious analytics, only if needed
+Analytics are optional for a personal portfolio. If added, choose a lightweight, privacy-conscious solution and collect only information that is genuinely useful.
+Useful metrics
+Page visits
+Most visited world
+Project link clicks
+Contact/social link clicks
+Do not add analytics merely because every website has analytics.
+22. SEO & Metadata
+Recommendation: native Next.js metadata
+Use Next.js Metadata APIs rather than adding an SEO plugin.
+Unique page title
+Description
+Open Graph metadata
+Twitter/X card metadata where useful
+Canonical URLs
+Favicon/app icons
+Sitemap
+robots.txt
+Structured content
+Add appropriate structured metadata only where it genuinely describes the portfolio/person and can be maintained accurately.
+23. Fonts
+Recommendation
+Use a deliberate display/body font pairing rather than defaulting to generic developer-site typography.
+If external font fetching causes build reliability problems, self-host the selected fonts. This avoids production build failures caused by network-dependent font downloads.
+Rule
+Typography is part of the brand. Choose fonts based on the final visual direction, not convenience alone.
+24. Data & Backend Decision
+No database initially
+A database is not recommended for the current portfolio.
+No custom backend initially
+A standalone Express/Node backend is also not recommended.
+When this decision changes
+A private admin CMS becomes necessary.
+The site requires authenticated content management.
+Large dynamic datasets appear.
+Interactive features require persistent user data.
+A future product evolves beyond a portfolio.
+25. CMS Decision
+Recommendation: No CMS for V1
+The archive currently contains a manageable amount of content. Local typed content is faster, more reliable, and easier to version with Git.
+Future option
+If content volume grows substantially, consider a headless CMS such as Sanity or Contentful. Do not introduce one preemptively.
+26. Recommended Folder Architecture
+A practical structure should separate routes, components, data, and design primitives.
+app/ — routes, layouts, metadata, loading/error boundaries
+components/ — reusable UI and world components
+components/ui/ — small primitives
+components/layout/ — navigation, world index, shell
+components/worlds/ — world-specific shared pieces
+components/projects/ — project presentation
+lib/ — GitHub client, utilities, validation
+data/ — typed static content
+styles/ — global design tokens if needed
+public/ — static assets
+Keep the existing architecture where it already works; this is a target organization rather than a mandate to move every file immediately.
+27. Environment Variables
+Principle
+Only secrets belong in environment variables. Public configuration does not need to be hidden.
+GitHub token, if a token becomes necessary for rate limits: server-only environment variable.
+Analytics key, if analytics are added.
+Any future third-party service credentials.
+Never expose private tokens through NEXT_PUBLIC_* variables.
+28. Security
+Keep external API credentials server-side.
+Validate external API responses.
+Avoid rendering untrusted HTML.
+Do not store unnecessary personal data.
+Use secure deployment defaults.
+Keep dependencies updated without blindly upgrading production dependencies.
+29. Performance Budget Philosophy
+Keep the initial page lightweight despite large visual assets.
+Prioritize above-the-fold content.
+Avoid shipping large client-only animation libraries beyond what is necessary.
+Use responsive image sizes.
+Lazy-load deep-page media.
+Prevent layout shift.
+Measure mobile performance before adding visual effects.
+The cinematic design should be achieved through composition and optimized media—not by shipping excessive JavaScript.
+30. Recommended Stack Summary
+Layer
+Technology
+Role
+Decision
+Framework
+Next.js 16.x
+Application, routing, rendering
+KEEP
+UI
+React 19.x
+Component system
+KEEP
+Language
+TypeScript 5.x
+Type safety
+KEEP
+CSS
+Tailwind CSS v4
+Layout and styling
+KEEP
+Design tokens
+CSS variables
+Themes/world atmospheres
+KEEP
+Animation
+Framer Motion
+Cinematic interaction
+KEEP
+Theme
+next-themes
+Light/dark mode
+KEEP
+Icons
+Lucide React
+Functional icons
+KEEP
+Images
+Next/Image
+Optimized media
+KEEP
+External data
+GitHub API
+Dynamic projects
+KEEP
+Validation
+Zod
+External data validation
+ADD
+Unit tests
+Vitest + RTL
+Component/logic testing
+ADD
+E2E
+Playwright
+Critical journeys
+ADD
+Formatting
+Prettier
+Consistent code style
+OPTIONAL
+Runtime
+Node.js 22 LTS
+Development/deployment runtime
+STANDARDIZE
+Package manager
+npm
+Dependencies
+KEEP
+Hosting
+Vercel
+Production deployment
+RECOMMEND
+CI
+GitHub Actions
+Quality checks
+RECOMMEND
+Database
+None
+Not currently required
+DO NOT ADD
+CMS
+None
+Not currently required
+DO NOT ADD
+Custom backend
+None
+Not currently required
+DO NOT ADD
+31. What I Would NOT Add
+MongoDB
+Express backend
+GraphQL
+Redux/Zustand unless real cross-page client state appears
+A UI component library that dictates the visual language
+A CMS for the initial release
+Three.js/WebGL for decorative effects
+GSAP in addition to Framer Motion
+A second animation library
+A separate image hosting service unless a real need appears
+A custom authentication system
+A database-backed admin panel
+The goal is to keep the technology proportional to the product.
+32. Architecture Diagram
+Visitor → Vercel → Next.js App Router → Server-rendered portfolio pages
+                                     ↘ GitHub API → normalized project data → CODE
+                                     ↘ local typed content → FRAME / CUT / DRIVE / SCREEN / ABOUT
+                                     ↘ Next/Image → optimized media
+Client-side layer → Framer Motion + next-themes + small interactive components
+33. Development Workflow
+Create a feature branch.
+Build the design/component change using the existing system.
+Run TypeScript checks and lint.
+Run unit tests for meaningful logic changes.
+Run Playwright for navigation or responsive behavior changes.
+Review desktop and mobile layouts.
+Open a pull request.
+Use the deployment preview for visual QA.
+Merge to main.
+Vercel deploys production.
+34. Final Recommendation
+Keep the portfolio technically lean and visually ambitious. Next.js + React + TypeScript + Tailwind v4 + Framer Motion is already a strong foundation for the product.
+The most important additions are not more frameworks. They are engineering discipline around external data validation, testing, performance, accessibility, and deployment.
+Final stack
+NEXT.JS + REACT + TYPESCRIPT + TAILWIND v4 + FRAMER MOTION + NEXT-THEMES + LUCIDE + NEXT/IMAGE + GITHUB API + ZOD + VITEST/RTL + PLAYWRIGHT + VERCEL + GITHUB
+North-star engineering principle
+Technically simple underneath. Visually exceptional on top.

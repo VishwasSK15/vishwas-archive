@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f9f9f7;
+  --foreground: #111318;
+  --muted: #4b5563;
+  --muted-meta: #374151;
+  --muted-bg: #eeeeec;
+  --border: rgba(0, 0, 0, 0.12);
+  --border-strong: rgba(0, 0, 0, 0.28);
+  --card: #ffffff;
+  --card-foreground: #111318;
+  --accent: #1c72b0;
+  --accent-hover: #165b8c;
+  --accent-subtle: rgba(28, 114, 176, 0.09);
+  --world-accent: #1c72b0;
+  --world-border: rgba(28, 114, 176, 0.35);
+}
+
+.dark {
+  --background: #090a0d;
+  --foreground: #f3f4f6;
+  --muted: #9ca3af;
+  --muted-meta: #a1a1aa;
+  --muted-bg: #13151b;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.25);
+  --card: #101217;
+  --card-foreground: #f3f4f6;
+  --accent: #389de4;
+  --accent-hover: #60aff0;
+  --accent-subtle: rgba(56, 157, 228, 0.12);
+  --world-accent: #389de4;
+  --world-border: rgba(56, 157, 228, 0.3);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-meta: var(--muted-meta);
+  --color-muted-bg: var(--muted-bg);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-world-accent: var(--world-accent);
+  --color-world-border: var(--world-border);
+}
+
+/* Typography Class Architecture */
+.font-display {
+  font-family: var(--font-monument), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-editorial {
+  font-family: var(--font-gt-super), Georgia, "Times New Roman", serif;
+}
+
+.font-script-expressive {
+  font-family: var(--font-wild-youth), cursive;
+  letter-spacing: 0.02em;
+}
+
+.font-script-elegant {
+  font-family: var(--font-southampton), cursive;
+  letter-spacing: 0.03em;
+}
+
+.font-mono-meta {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Atmosphere classes for each active world */
+.atmosphere-code {
+  --world-accent: #1c72b0;
+  --world-border: rgba(28, 114, 176, 0.35);
+}
+.dark .atmosphere-code {
+  --world-accent: #389de4;
+  --world-border: rgba(56, 157, 228, 0.3);
+}
+
+.atmosphere-frame {
+  --world-accent: #b45309;
+  --world-border: rgba(180, 83, 9, 0.35);
+}
+.dark .atmosphere-frame {
+  --world-accent: #e5a93b;
+  --world-border: rgba(229, 169, 59, 0.3);
+}
+
+.atmosphere-screen {
+  --world-accent: #7e22ce;
+  --world-border: rgba(126, 34, 206, 0.35);
+}
+.dark .atmosphere-screen {
+  --world-accent: #c084fc;
+  --world-border: rgba(192, 132, 252, 0.3);
+}
+
+.atmosphere-about {
+  --world-accent: #1c72b0;
+  --world-border: rgba(28, 114, 176, 0.35);
+}
+.dark .atmosphere-about {
+  --world-accent: #389de4;
+  --world-border: rgba(56, 157, 228, 0.3);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Structural lines and borders */
+.archive-border {
+  border-color: var(--border);
+}
+
+.archive-border-strong {
+  border-color: var(--border-strong);
+}
+
+/* Subtle selection styling */
+::selection {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+/* Smooth transition for theme colors */
+body, header, footer, nav, section, div, a, button {
+  transition-property: background-color, border-color, color;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
