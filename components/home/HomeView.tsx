@@ -4,12 +4,17 @@ import { useState, useEffect, useCallback } from "react";
 import { HeroArchive } from "./HeroArchive";
 import { WorldChaptersOverview } from "./WorldChaptersOverview";
 import { ArchiveIntro } from "@/components/intro/ArchiveIntro";
+import type { FramePhoto } from "@/lib/types";
 
 // Track in-memory SPA navigation so internal transitions remain smooth,
 // while every browser refresh/reload resets memory and ALWAYS plays the intro.
 let globalIntroPlayedInSession = false;
 
-export function HomeView() {
+interface HomeViewProps {
+  framePhotos?: FramePhoto[];
+}
+
+export function HomeView({ framePhotos = [] }: HomeViewProps) {
   const [introDismissed, setIntroDismissed] = useState(() => globalIntroPlayedInSession);
 
   const showIntro = !introDismissed;
@@ -33,7 +38,7 @@ export function HomeView() {
     <div className="w-full relative">
       {showIntro && <ArchiveIntro onComplete={handleComplete} />}
       <HeroArchive />
-      <WorldChaptersOverview />
+      <WorldChaptersOverview framePhotos={framePhotos} />
     </div>
   );
 }

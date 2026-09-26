@@ -1,8 +1,78 @@
+"use client";
+
+import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, User } from "lucide-react";
+import type { FramePhoto } from "@/lib/types";
 
-export function WorldChaptersOverview() {
+interface WorldChaptersOverviewProps {
+  framePhotos?: FramePhoto[];
+}
+
+const KNOWN_FRAME_LABELS: Record<string, string> = {
+  "jog-falls.jpg": "JOG FALLS // 253M",
+  "golden-hour-lake.jpg": "GOLDEN HOUR // LAKE",
+  "sigandur.jpg": "SIGANDUR // FERRY",
+  "lake.jpg": "LAKE // WATER",
+  "train 2.jpg": "TRAVEL // RAIL",
+  "fall.JPG": "AUTUMN // FOLIAGE",
+  "night 1.jpg": "NIGHT // PERSPECTIVE",
+  "sunset 1.png": "SUNSET // HORIZON",
+  "sunset 2.jpg": "SUNSET // DUSK",
+  "sunset 3.jpg": "SUNSET // TWILIGHT",
+  "sunset 4.jpg": "SUNSET // EVENING",
+  "flowers 1.jpg": "FLORA // BOTANICAL",
+  "flowers 2.JPG": "FLORA // BLOOM",
+  "flowers 3.JPG": "FLORA // PETALS",
+  "cloud 1.png": "SKY // CLOUDS",
+};
+
+function getFrameBadgeLabel(photo: FramePhoto): string {
+  if (KNOWN_FRAME_LABELS[photo.filename]) {
+    return KNOWN_FRAME_LABELS[photo.filename];
+  }
+  const baseName = photo.filename.replace(/\.[^/.]+$/, "");
+  if (/^img[_-]/i.test(baseName)) {
+    return "FRAME // ARCHIVE";
+  }
+  const cleaned = baseName
+    .replace(/[-_]+/g, " ")
+    .replace(/\b(\d)\b/g, "0$1")
+    .trim()
+    .toUpperCase();
+  return `${cleaned} // ARCHIVE`;
+}
+
+let cachedClientPreview: [FramePhoto, FramePhoto] | null = null;
+const emptySubscribe = () => () => {};
+
+function getServerPreview(photos: FramePhoto[]): [FramePhoto, FramePhoto] | null {
+  if (photos.length >= 2) return [photos[0], photos[1]];
+  if (photos.length === 1) return [photos[0], photos[0]];
+  return null;
+}
+
+function getClientPreview(photos: FramePhoto[]): [FramePhoto, FramePhoto] | null {
+  if (cachedClientPreview) return cachedClientPreview;
+  if (!photos || photos.length === 0) return null;
+  if (photos.length === 1) {
+    cachedClientPreview = [photos[0], photos[0]];
+    return cachedClientPreview;
+  }
+  const idx1 = Math.floor(Math.random() * photos.length);
+  let idx2 = Math.floor(Math.random() * (photos.length - 1));
+  if (idx2 >= idx1) idx2++;
+  cachedClientPreview = [photos[idx1], photos[idx2]];
+  return cachedClientPreview;
+}
+
+export function WorldChaptersOverview({ framePhotos = [] }: WorldChaptersOverviewProps) {
+  const previewPair = useSyncExternalStore(
+    emptySubscribe,
+    () => getClientPreview(framePhotos),
+    () => getServerPreview(framePhotos)
+  );
   return (
     <section id="worlds-overview" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-28">
       {/* Editorial Chapter Header */}
@@ -90,36 +160,40 @@ export function WorldChaptersOverview() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-t border-neutral-300 dark:border-neutral-800 pt-16">
         <div className="lg:col-span-7 order-2 lg:order-1">
           <div className="grid grid-cols-2 gap-4">
-            <Link
-              href="/frame"
-              className="group relative aspect-[4/3] rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-800 shadow-xs"
-            >
-              <Image
-                src="/images/frame/jog-falls.jpg"
-                alt="Jog Falls Monsoon Torrent"
-                fill
-                sizes="(max-width: 1024px) 50vw, 380px"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute bottom-2 left-2 px-2.5 py-1 bg-black/75 backdrop-blur-sm rounded text-[10px] font-mono-meta text-white font-semibold">
-                JOG FALLS // 253M
-              </div>
-            </Link>
-            <Link
-              href="/frame"
-              className="group relative aspect-[4/3] rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-800 shadow-xs"
-            >
-              <Image
-                src="/images/frame/western-ghats-falls.jpg"
-                alt="Western Ghats Cascades"
-                fill
-                sizes="(max-width: 1024px) 50vw, 380px"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute bottom-2 left-2 px-2.5 py-1 bg-black/75 backdrop-blur-sm rounded text-[10px] font-mono-meta text-white font-semibold">
-                WESTERN GHATS // FIELD
-              </div>
-            </Link>
+            {previewPair ? (
+              <>
+                <Link
+                  href="/frame"
+                  className="group relative aspect-[4/3] rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-800 shadow-xs"
+                >
+                  <Image
+                    src={previewPair[0].src || previewPair[0].image || ""}
+                    alt={previewPair[0].alt || "Personal photograph"}
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 380px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute bottom-2 left-2 px-2.5 py-1 bg-black/75 backdrop-blur-sm rounded text-[10px] font-mono-meta text-white font-semibold uppercase">
+                    {getFrameBadgeLabel(previewPair[0])}
+                  </div>
+                </Link>
+                <Link
+                  href="/frame"
+                  className="group relative aspect-[4/3] rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-800 shadow-xs"
+                >
+                  <Image
+                    src={previewPair[1].src || previewPair[1].image || ""}
+                    alt={previewPair[1].alt || "Personal photograph"}
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 380px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute bottom-2 left-2 px-2.5 py-1 bg-black/75 backdrop-blur-sm rounded text-[10px] font-mono-meta text-white font-semibold uppercase">
+                    {getFrameBadgeLabel(previewPair[1])}
+                  </div>
+                </Link>
+              </>
+            ) : null}
           </div>
         </div>
         <div className="lg:col-span-5 space-y-6 order-1 lg:order-2">

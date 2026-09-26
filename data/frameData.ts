@@ -57,23 +57,6 @@ export const FRAME_PHOTOS: FramePhoto[] = [
     tag: "Quiet Mornings",
   },
   {
-    id: "04",
-    filename: "western-ghats-falls.jpg",
-    src: "/images/frame/western-ghats-falls.jpg",
-    image: "/images/frame/western-ghats-falls.jpg",
-    width: 3264,
-    height: 2448,
-    aspectRatio: 1.3333,
-    orientation: "landscape",
-    aspect: "landscape",
-    alt: "Deep ghats rainforest stream",
-    title: "Deep Ghats Rainforest Stream",
-    location: "Western Ghats, Karnataka",
-    story:
-      "Hiking through the evergreen canopy early morning. The air feels cool and quiet, with soft light filtering through heavy layers of moss and dense canopy leaves.",
-    tag: "Travel / Western Ghats",
-  },
-  {
     id: "05",
     filename: "golden-hour-lake.jpg",
     src: "/images/frame/golden-hour-lake.jpg",
