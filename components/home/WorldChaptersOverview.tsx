@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, User } from "lucide-react";
@@ -44,35 +44,38 @@ function getFrameBadgeLabel(photo: FramePhoto): string {
   return `${cleaned} // ARCHIVE`;
 }
 
-let cachedClientPreview: [FramePhoto, FramePhoto] | null = null;
-const emptySubscribe = () => () => {};
-
-function getServerPreview(photos: FramePhoto[]): [FramePhoto, FramePhoto] | null {
+const getInitialPreview = (photos: FramePhoto[]): [FramePhoto, FramePhoto] | null => {
   if (photos.length >= 2) return [photos[0], photos[1]];
   if (photos.length === 1) return [photos[0], photos[0]];
   return null;
-}
+};
 
-function getClientPreview(photos: FramePhoto[]): [FramePhoto, FramePhoto] | null {
-  if (cachedClientPreview) return cachedClientPreview;
-  if (!photos || photos.length === 0) return null;
-  if (photos.length === 1) {
-    cachedClientPreview = [photos[0], photos[0]];
-    return cachedClientPreview;
+const getRandomPreview = (photos: FramePhoto[]): [FramePhoto, FramePhoto] | null => {
+  if (photos.length >= 2) {
+    const firstIndex = Math.floor(Math.random() * photos.length);
+    let secondIndex = Math.floor(Math.random() * (photos.length - 1));
+    if (secondIndex >= firstIndex) {
+      secondIndex += 1;
+    }
+    return [photos[firstIndex], photos[secondIndex]];
   }
-  const idx1 = Math.floor(Math.random() * photos.length);
-  let idx2 = Math.floor(Math.random() * (photos.length - 1));
-  if (idx2 >= idx1) idx2++;
-  cachedClientPreview = [photos[idx1], photos[idx2]];
-  return cachedClientPreview;
-}
+
+  if (photos.length === 1) {
+    return [photos[0], photos[0]];
+  }
+
+  return null;
+};
 
 export function WorldChaptersOverview({ framePhotos = [] }: WorldChaptersOverviewProps) {
-  const previewPair = useSyncExternalStore(
-    emptySubscribe,
-    () => getClientPreview(framePhotos),
-    () => getServerPreview(framePhotos)
+  const [previewPair, setPreviewPair] = useState(() =>
+    getInitialPreview(framePhotos)
   );
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPreviewPair(getRandomPreview(framePhotos));
+  }, [framePhotos]);
   return (
     <section id="worlds-overview" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-28">
       {/* Editorial Chapter Header */}
@@ -216,7 +219,7 @@ export function WorldChaptersOverview({ framePhotos = [] }: WorldChaptersOvervie
           </p>
           <div className="flex flex-wrap gap-2 text-xs font-mono-meta text-neutral-800 dark:text-neutral-300">
             <span className="px-2.5 py-1 bg-neutral-100 dark:bg-neutral-800 rounded border border-neutral-300/80 dark:border-neutral-700">
-              CANON OPTICS
+              PERSONAL ARCHIVE
             </span>
             <span className="px-2.5 py-1 bg-neutral-100 dark:bg-neutral-800 rounded border border-neutral-300/80 dark:border-neutral-700">
               NATURAL LIGHT
