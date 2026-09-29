@@ -1,217 +1,395 @@
 # VISHWAS // THE ARCHIVE
 
-> A little corner of the internet for the things I build, capture, watch, and keep coming back to.
+<p align="center">
+  <br>
+  <strong>THINGS I BUILD. CAPTURE. EDIT. WATCH. AND KEEP COMING BACK TO.</strong>
+  <br><br>
+  <a href="https://github.com/VishwasSK15">github</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/VishwasSK15/vishwas-archive">the archive</a>
+  &nbsp;·&nbsp;
+  <a href="https://leetcode.com/u/vishwassk15/">leetcode</a>
+  &nbsp;·&nbsp;
+  <a href="https://www.instagram.com/vishu_._15/">instagram</a>
+</p>
 
-**Vishwas S K**  
+---
+
+## 01 — THE PERSON BEHIND THE CODE
+
+<strong>Vishwas S K</strong><br>
 Engineering Student · Bengaluru, India
 
----
+I build software because I like turning an idea that exists only in my head into something that actually works.
 
-## About
+But code is only one part of the picture.
 
-**VISHWAS // THE ARCHIVE** is my personal portfolio and digital archive.
+I'm interested in <strong>web development, systems, AI, photography, visual editing, automobiles, cinema, and the small details that make an experience feel intentional.</strong>
 
-I'm an engineering student who spends time between code, photography, editing, automobiles, and movies. This website is a collection of the things I'm learning, building, capturing, and enjoying along the way.
+So this GitHub isn't just a collection of repositories.
 
-It isn't meant to be a traditional portfolio.
+It's a record of what I was curious about.
 
-Think of it more like my personal corner of the internet.
-
----
-
-## The Archive
-
-### CODE
-
-Projects I've built while learning and experimenting with software.
-
-The section connects with my GitHub projects and presents them as part of the larger archive rather than as a conventional project list.
-
-### FRAME
-
-A collection of photographs and moments I've captured.
-
-No technical breakdowns.  
-No camera specifications.  
-No professional photography showcase.
-
-Just images I liked enough to keep.
-
-### SCREEN
-
-A collection of the movies, characters, stories, and cinema that I keep coming back to.
-
-The archive includes:
-
-- Marvel
-- Science Fiction
-- F1 & Racing
-- Kannada Cinema
-
-From Iron Man and the MCU to Interstellar, The Martian, racing films, and Kannada movies.
-
-### ABOUT
-
-A little more about me, where I'm from, what I'm learning, and the things I enjoy outside of code.
+> <strong>I don't want everything I make to look the same.<br>
+> I want everything I make to feel like it came from me.</strong>
 
 ---
 
-## Tech Stack
+# 02 — THE SIX WORLDS
+
+<table>
+<tr>
+<td width="50%">
+
+### <code>CODE /</code>
+<strong>Systems, software, and things that work.</strong>
+
+Full-stack applications, experiments, interfaces, databases, APIs, automation, and the occasional battle with a dependency that absolutely did not want to cooperate.
+
+</td>
+<td width="50%">
+
+### <code>FRAME /</code>
+<strong>Photography and moments worth keeping.</strong>
+
+Not a photography business.<br>
+Not a gear catalogue.
+
+Just frames I liked enough to keep.
+
+</td>
+</tr>
+<tr>
+<td>
+
+### <code>CUT /</code>
+<strong>Editing, composition, and visual storytelling.</strong>
+
+Taking something ordinary and asking:
+
+<em>What happens if I frame it differently?</em>
+
+</td>
+<td>
+
+### <code>DRIVE /</code>
+<strong>Automobiles, machines, motion.</strong>
+
+A long-running fascination with cars, engineering, racing, design, and the feeling of something mechanical doing exactly what it was built to do.
+
+</td>
+</tr>
+<tr>
+<td>
+
+### <code>SCREEN /</code>
+<strong>Cinema, stories, characters, and worlds.</strong>
+
+Marvel. Science fiction. F1 & racing. Kannada cinema.
+
+Stories that stay long after the screen goes dark.
+
+</td>
+<td>
+
+### <code>LAB /</code>
+<strong>Experiments without a fixed destination.</strong>
+
+AI, IoT, machine learning, reinforcement learning, new tools, weird ideas, prototypes, and things built simply because I wanted to know <em>if I could</em>.
+
+</td>
+</tr>
+</table>
+
+---
+
+# 03 — WHAT I BUILD
+
+## 🏥 HealthHub
+
+A full-stack doctor appointment ecosystem built around a real-world healthcare workflow.
+
+<strong>Three connected applications:</strong>
+
+- Patient-facing frontend
+- Doctor/admin management
+- Backend API and data layer
+
+<strong>Stack:</strong> <code>React</code> · <code>Node.js</code> · <code>Express</code> · <code>MongoDB</code> · <code>Mongoose</code> · <code>Cloudinary</code> · <code>Vite</code>
+
+The project pushed me through the parts of development that tutorials conveniently leave out:
+
+deployment, CORS, environment variables, database authentication, cloud storage, production debugging, and making multiple applications behave like one system.
+
+→ <a href="https://github.com/VishwasSK15/HealthHub-frontend">HealthHub Frontend</a>  
+→ <a href="https://github.com/VishwasSK15/HealthHub-backend">HealthHub Backend</a>  
+→ <a href="https://github.com/VishwasSK15/HealthHub-admin">HealthHub Admin</a>
+
+---
+
+## 🧠 AI Resume Analyzer
+
+A project exploring how AI can be used to understand and work with resumes.
+
+<strong>Focus:</strong> document understanding · resume analysis · AI-assisted workflows
+
+→ <a href="https://github.com/VishwasSK15/AI-Resume-Analyzer">Repository</a>
+
+---
+
+## 🔐 PrivateDoc AI
+
+A project exploring private document interaction and AI-assisted document workflows.
+
+→ <a href="https://github.com/VishwasSK15/privatedoc-ai">Repository</a>
+
+---
+
+## 🧊 Sri Kaveri Ice Plant
+
+A project built around a real business context rather than a tutorial prompt.
+
+→ <a href="https://github.com/VishwasSK15/sri-kaveri-ice-plant">Repository</a>
+
+---
+
+## 🌾 Agricultural Store Billing
+
+One of my current directions is an <strong>offline-first agricultural shop billing system</strong> for stores dealing with fertilizers, pesticides, fungicides, and related products.
+
+The idea is deliberately practical:
+
+- customer records
+- GST billing
+- mandatory bill printing
+- purchase history
+- inventory tracking
+- automatic stock updates
+- offline billing
+- payment/outstanding reminders
+- sales insights
+- inventory insights
+
+The interesting part isn't just building another CRUD application.
+
+It's designing software that still makes sense when the internet doesn't.
+
+---
+
+## 🏎️ Dynamic Matching in Ridesharing
+
+An exploration into <strong>reinforcement learning for dynamic ridesharing matching</strong>.
+
+The goal: investigate how an RL-based system can make better matching decisions as the state of a ridesharing environment changes.
+
+<strong>Area:</strong> reinforcement learning · optimization · dynamic matching
+
+---
+
+## 🤖 IoT / Embedded Experiments
+
+I've also spent time around:
+
+<code>ESP8266</code> · <code>MQTT</code> · <code>Mosquitto</code> · <code>PubSubClient</code> · <code>BH1750</code> · <code>SQLite</code> · <code>Arduino</code>
+
+I like projects where software stops being just pixels on a screen and starts interacting with the physical world.
+
+---
+
+# 04 — THE TOOLBOX
+
+### Languages
+
+<code>C</code> · <code>Java</code> · <code>Python</code> · <code>JavaScript</code> · <code>TypeScript</code> · <code>PHP</code>
+
+### Frontend
+
+<code>HTML</code> · <code>CSS</code> · <code>JavaScript</code> · <code>React</code> · <code>Next.js</code> · <code>Tailwind CSS</code> · <code>Vite</code>
+
+### Backend
+
+<code>Node.js</code> · <code>Express</code> · <code>PHP</code> · <code>REST APIs</code>
+
+### Data
+
+<code>MongoDB</code> · <code>Mongoose</code> · <code>MySQL</code> · <code>SQLite</code>
+
+### AI / Experiments
+
+<code>Python</code> · <code>Machine Learning</code> · <code>Deep Learning</code> · <code>Reinforcement Learning</code>
+
+### Tools
+
+<code>Git</code> · <code>GitHub</code> · <code>npm</code> · <code>Cloudinary</code> · <code>Render</code> · <code>Vercel</code> · <code>Arduino</code> · <code>Mosquitto</code>
+
+---
+
+# 05 — HOW I LIKE TO BUILD
+
+I tend to care about things that are easy to overlook.
+
+<strong>Does it actually work?</strong><br>
+<strong>Does it still work after deployment?</strong><br>
+<strong>What happens when the network disappears?</strong><br>
+<strong>Can a real person understand the interface without being taught?</strong><br>
+<strong>Does the error message help?</strong><br>
+<strong>Can the workflow be tested end-to-end?</strong><br>
+<strong>Does the design have a reason to exist?</strong>
+
+That mindset has gradually changed the way I approach projects.
+
+I don't just want to make the feature.
+
+I want to understand the system around the feature.
+
+---
+
+# 06 — VISHWAS // THE ARCHIVE
+
+My portfolio is built around the idea that a person doesn't have to fit into one category.
+
+The archive is designed as a collection of <strong>worlds</strong> rather than a conventional portfolio:
+
+<code>CODE</code> · <code>FRAME</code> · <code>CUT</code> · <code>DRIVE</code> · <code>SCREEN</code> · <code>LAB</code>
 
 Built with:
 
-- **Next.js**
-- **React**
-- **TypeScript**
-- **Tailwind CSS**
-- **Framer Motion**
-- **Lucide React**
-- **Next Themes**
-- **GitHub API**
+- <strong>Next.js 16</strong>
+- <strong>React 19</strong>
+- <strong>TypeScript</strong>
+- <strong>Tailwind CSS</strong>
+- <strong>Framer Motion</strong>
+- <strong>Lucide React</strong>
+- <strong>next-themes</strong>
+- <strong>GitHub API</strong>
 
-### Typography
+And visually:
 
-The visual identity uses locally hosted typefaces:
+- <strong>Monument Extended</strong> — display typography
+- <strong>GT Super</strong> — editorial serif
+- <strong>Wild Youth</strong> — expressive handwritten accents
+- <strong>Southampton</strong> — handwritten highlights
 
-- Monument Extended
-- GT Super
-- Wild Youth
-- Southampton
+The design philosophy is intentionally restrained:
 
----
+<strong>typography over decoration.<br>
+whitespace over clutter.<br>
+motion with purpose.<br>
+real work over generic portfolio sections.</strong>
 
-## Features
-
-- Responsive desktop and mobile experience
-- Light and dark themes
-- Cinematic intro sequence
-- Animated transitions and interactions
-- GitHub-powered project section
-- Folder-driven photography gallery
-- Natural image aspect ratios
-- Full-screen image viewer
-- Cinematic movie archive
-- Responsive horizontal project navigation
-- Personal photo carousel
-- Contact and social links
-- Reduced-motion support
-- Mobile-friendly touch interactions
+→ <a href="https://github.com/VishwasSK15/vishwas-archive">Explore the Archive</a>
 
 ---
 
-## Project Structure
+# 07 — EDUCATION
 
-```text
-vishwas-archive/
-├── app/
-│   ├── about/
-│   ├── code/
-│   ├── frame/
-│   ├── screen/
-│   └── page.tsx
-│
-├── components/
-│   ├── about/
-│   ├── frame/
-│   ├── projects/
-│   ├── screen/
-│   └── ...
-│
-├── lib/
-│   └── github.ts
-│
-├── public/
-│   ├── fonts/
-│   └── images/
-│
-├── archive-inactive/
-├── sources/
-├── package.json
-└── README.md
-```
+🎓 <strong>Engineering Student</strong><br>
+<strong>Rajarajeswari College of Engineering, Bengaluru</strong><br>
+VTU curriculum
+
+I've also completed:
+
+- Full Stack Web Development — Agrtas Edu Tech
+- NPTEL coursework
+
+My learning has mostly followed a simple pattern:
+
+> learn → build → break → debug → understand → build again
 
 ---
 
-## Running Locally
+# 08 — OUTSIDE THE TERMINAL
 
-Clone the repository:
+When I'm not writing code, the interests tend to get a little less predictable.
 
-```bash
-git clone https://github.com/VishwasSK15/vishwas-archive.git
-```
+📷 <strong>Photography</strong><br>
+Finding frames in ordinary places.
 
-Move into the project:
+🎬 <strong>Cinema</strong><br>
+Marvel, science fiction, racing films, Kannada cinema, characters and worlds that are impossible to forget.
 
-```bash
-cd vishwas-archive
-```
+🏎️ <strong>Automobiles</strong><br>
+Design, engineering, speed, machines, and everything around them.
 
-Install dependencies:
+🎞️ <strong>Editing</strong><br>
+Playing with composition, colour, timing, transitions, and visual identity.
 
-```bash
-npm install
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-Open `http://localhost:3000`.
+🧪 <strong>Experiments</strong><br>
+Trying things without needing a perfect reason first.
 
 ---
 
-## Production Build
+# 09 — CURRENTLY
 
-Run linting:
+I'm somewhere between:
 
-```bash
-npm run lint
-```
+<strong>student → developer → builder → creator</strong>
 
-Create a production build:
+Learning full-stack engineering.<br>
+Exploring AI.<br>
+Building practical software.<br>
+Experimenting with interfaces.<br>
+Working on projects that are increasingly less like assignments and more like products.
 
-```bash
-npm run build
-```
-
-Start the production server:
-
-```bash
-npm start
-```
+And still figuring out what comes next.
 
 ---
 
-## GitHub Projects
+# 10 — A FEW THINGS I BELIEVE
 
-The CODE section can retrieve projects from GitHub and display repositories marked for the portfolio.
+> <strong>A project doesn't have to be revolutionary to be worth building.</strong>
 
-GitHub: **[@VishwasSK15](https://github.com/VishwasSK15)**
+> <strong>A good interface should make sense before it explains itself.</strong>
 
----
+> <strong>Offline is a feature.</strong>
 
-## Contact
+> <strong>The best way to learn a system is sometimes to break it.</strong>
 
-**Email:** vishwasskshikaripura@gmail.com
+> <strong>You can be technical and creative at the same time.</strong>
 
-**Instagram:** https://www.instagram.com/vishu_._15/
-
-**LeetCode:** https://leetcode.com/u/vishwassk15/
+> <strong>Your GitHub can be a record of your evolution, not just your finished work.</strong>
 
 ---
 
-## Credits
+# 11 — THE REPOSITORIES
 
-Designed and built by **Vishwas S K**.
-
-The photographs, visual direction, writing, and overall concept are part of the personal archive.
+| Repository | What it represents |
+|---|---|
+| <a href="https://github.com/VishwasSK15/HealthHub-frontend">HealthHub-frontend</a> | Patient-facing healthcare application |
+| <a href="https://github.com/VishwasSK15/HealthHub-backend">HealthHub-backend</a> | Backend APIs and data layer |
+| <a href="https://github.com/VishwasSK15/HealthHub-admin">HealthHub-admin</a> | Healthcare administration interface |
+| <a href="https://github.com/VishwasSK15/AI-Resume-Analyzer">AI-Resume-Analyzer</a> | AI-assisted resume analysis |
+| <a href="https://github.com/VishwasSK15/privatedoc-ai">privatedoc-ai</a> | Private document + AI exploration |
+| <a href="https://github.com/VishwasSK15/sri-kaveri-ice-plant">sri-kaveri-ice-plant</a> | Real-world business web project |
+| <a href="https://github.com/VishwasSK15/web-dev">web-dev</a> | Web development experiments and learning |
+| <a href="https://github.com/VishwasSK15/vishwas-archive">vishwas-archive</a> | The personal digital archive |
 
 ---
 
-> CODE. FRAME. SCREEN.
->
-> Things I build, capture and lose time watching.
+# 12 — FIND ME
 
-**VISHWAS // THE ARCHIVE**
+<p align="center">
+
+<a href="https://github.com/VishwasSK15">
+<img src="https://img.shields.io/badge/GitHub-VishwasSK15-111111?style=for-the-badge&logo=github&logoColor=white" />
+</a>
+&nbsp;
+<a href="https://leetcode.com/u/vishwassk15/">
+<img src="https://img.shields.io/badge/LeetCode-vishwassk15-111111?style=for-the-badge&logo=leetcode&logoColor=white" />
+</a>
+&nbsp;
+<a href="https://www.instagram.com/vishu_._15/">
+<img src="https://img.shields.io/badge/Instagram-vishu__._15-111111?style=for-the-badge&logo=instagram&logoColor=white" />
+</a>
+
+</p>
+
+---
+
+<p align="center">
+  <sub>Built, captured, edited, watched and archived by Vishwas S K.</sub>
+  <br><br>
+  <strong>VISHWAS // THE ARCHIVE</strong>
+  <br>
+  <sub>CODE · FRAME · CUT · DRIVE · SCREEN · LAB</sub>
+</p>
